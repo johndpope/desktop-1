@@ -86,7 +86,7 @@ public static final int TRANSPARENT_FORGING_BLOCK_6 =0;
         C = Calendar.getInstance();
         //   C.set(2017, 5, 30);
 
-        C.set(2017,6,12,8,0);
+        C.set(2017,6,13,8,0);
         EPOCH_BEGINNING=C.getTimeInMillis();
 
 

@@ -270,7 +270,8 @@ final class BlockImpl implements Block {
         buffer.put(payloadHash);
         buffer.put(generatorPublicKey);
         buffer.put(generationSignature);
-        if (version >=1) {
+        /*may a problem*/
+        if (version <=1) {
             buffer.put(previousBlockHash);
         }
         buffer.put(blockSignature);

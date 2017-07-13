@@ -576,7 +576,7 @@ var NRS = (function(NRS, $, undefined) {
 
 		/*var date = new Date(Date.UTC(2017, 6, 4, 0, 0, 0, 0) + timestamp * 1000);*/
 			//var date=new Date(2017, 6, 3, 0, 0, 0)
-        var date = new Date(Date.UTC(2017, 6, 12, 0, 0, 0, 0) + timestamp * 1000);
+        var date = new Date(Date.UTC(2017, 6, 13, 0, 0, 0, 0) + timestamp * 1000);
 		if (!isNaN(date) && typeof(date.getFullYear) == 'function') {
 			var d = date.getDate();
 			var dd = d < 10 ? '0' + d : d;
@@ -619,7 +619,7 @@ var NRS = (function(NRS, $, undefined) {
 	}
 
 	NRS.formatTime = function(timestamp) {
-        var date = new Date(Date.UTC(2017, 6, 12, 0, 0, 0, 0) + timestamp * 1000);
+        var date = new Date(Date.UTC(2017, 6, 13, 0, 0, 0, 0) + timestamp * 1000);
 
 		if (!isNaN(date) && typeof(date.getFullYear) == 'function') {
 			var res = "";
