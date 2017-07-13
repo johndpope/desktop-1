@@ -25,6 +25,14 @@ public final class Vote {
 
     }
 
+    /**
+     * 添加一个投票
+     * @param id
+     * @param pollId
+     * @param voterId
+     * @param vote
+     * @return
+     */
     static Vote addVote(Long id, Long pollId, Long voterId, byte[] vote) {
         Vote voteData = new Vote(id, pollId, voterId, vote);
         if (votes.putIfAbsent(id, voteData) != null) {

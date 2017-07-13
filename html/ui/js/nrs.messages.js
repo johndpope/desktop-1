@@ -15,7 +15,6 @@ var NRS = (function(NRS, $, undefined) {
 			if (response.transactionIds && response.transactionIds.length) {
 				var transactionIds = response.transactionIds.reverse().slice(0, 100);
 				var nrTransactions = transactionIds.length;
-
 				NRS.messages = {};
 
 				var transactionsChecked = 0;

@@ -1,6 +1,6 @@
 var NRS = (function(NRS, $, undefined) {
 	NRS.newlyCreatedAccount = false;
-
+//
 	NRS.allowLoginViaEnter = function() {
 		$("#login_password").keypress(function(e) {
 			if (e.which == '13') {
@@ -32,6 +32,7 @@ var NRS = (function(NRS, $, undefined) {
 	NRS.showWelcomeScreen = function() {
 		$("#login_panel, account_phrase_custom_panel, #account_phrase_generator_panel, #account_phrase_custom_panel, #welcome_panel, #custom_passphrase_link").hide();
 		$("#welcome_panel").show();
+		alert("hello")
 	}
 
 	NRS.registerUserDefinedAccount = function() {

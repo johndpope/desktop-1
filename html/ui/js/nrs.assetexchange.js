@@ -112,7 +112,11 @@ var NRS = (function(NRS, $, undefined) {
 			});
 		}
 	}
-
+    /**
+	 *
+     * @param newAssets
+     * @param callback
+     */
 	NRS.saveNewAssets = function(newAssets, callback) {
 		if (newAssets && newAssets.length) {
 			for (var i = 0; i < newAssets.length; i++) {

@@ -572,7 +572,9 @@ var NRS = (function(NRS, $, undefined) {
 	}
 
 	NRS.formatTimestamp = function(timestamp, date_only) {
+	//	alert("hello")
         //var stringTime = "2014-07-10 10:21:12";
+
 
 		/*var date = new Date(Date.UTC(2017, 6, 4, 0, 0, 0, 0) + timestamp * 1000);*/
 			//var date=new Date(2017, 6, 3, 0, 0, 0)

@@ -20,6 +20,11 @@ public abstract class Order {
         Bid.sortedBidOrders.clear();
     }
 
+
+    /****
+     * 资产匹配
+     * @param assetId
+     */
     private static void matchOrders(Long assetId) {
 
         SortedSet<Ask> sortedAssetAskOrders = Ask.sortedAskOrders.get(assetId);

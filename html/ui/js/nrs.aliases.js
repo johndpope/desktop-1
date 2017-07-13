@@ -3,8 +3,10 @@ var NRS = (function(NRS, $, undefined) {
 		NRS.pageLoading();
 
 		NRS.sendRequest("listAccountAliases+", {
+
 			"account": NRS.account
 		}, function(response) {
+
 			if (response.aliases && response.aliases.length) {
 				var aliases = response.aliases;
 
