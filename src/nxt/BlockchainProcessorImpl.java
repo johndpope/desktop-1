@@ -501,8 +501,11 @@ final class BlockchainProcessorImpl implements BlockchainProcessor {
                     Genesis.CREATOR_PUBLIC_KEY, new byte[64], Genesis.GENESIS_BLOCK_SIGNATURE, null, new ArrayList<>(transactionsMap.values()));
 
             genesisBlock.setPrevious(null);
+            Logger.logMessage("BlockChainProcessorImpl add genessisBlock"+genesisBlock);
 
             addBlock(genesisBlock);
+
+
 
         } catch (NxtException.ValidationException e) {
             Logger.logMessage(e.getMessage());
@@ -511,7 +514,7 @@ final class BlockchainProcessorImpl implements BlockchainProcessor {
     }
 
     private byte[] calculateTransactionsChecksum() {
-        Logger.logMessage("BlockchainProcessorImpl 开始计算checksum的值.....");
+        Logger.logMessage("BlockchainProcessorImpl start caculateChecksum.....");
         MessageDigest digest = Crypto.sha256();
         try (Connection con = Db.getConnection();
              PreparedStatement pstmt = con.prepareStatement(
@@ -521,7 +524,7 @@ final class BlockchainProcessorImpl implements BlockchainProcessor {
                 digest.update(iterator.next().getBytes());
             }
         } catch (SQLException e) {
-            Logger.logMessage("BlockchainProcessorImpl checksum的值计算失败....");
+            Logger.logMessage("BlockchainProcessorImpl checksum calculate fail....");
             throw new RuntimeException(e.toString(), e);
         }
         Logger.logMessage("BlockchainProcessorImpl checksum的值计算完成.........");

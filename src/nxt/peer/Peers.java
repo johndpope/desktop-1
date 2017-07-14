@@ -467,6 +467,8 @@ public final class Peers {
     }
 
     public static void sendToSomePeers(Block block) {
+        Logger.logMessage("peers sendTosomePeers(block)="+block);
+
         JSONObject request = block.getJSONObject();
         request.put("requestType", "processBlock");
         sendToSomePeers(request);

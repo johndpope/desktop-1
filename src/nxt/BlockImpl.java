@@ -20,6 +20,23 @@ import java.util.List;
  */
 final class BlockImpl implements Block {
 
+    @Override
+    public String toString() {
+        return "BlockImpl{" +
+                "version=" + version +
+                ", timestamp=" + timestamp +
+                ", previousBlockId=" + previousBlockId +
+                ", generatorPublicKey=" + Arrays.toString(generatorPublicKey) +
+                ", previousBlockHash=" + Arrays.toString(previousBlockHash) +
+                ", generationSignature=" + Arrays.toString(generationSignature) +
+                ", cumulativeDifficulty=" + cumulativeDifficulty +
+                ", baseTarget=" + baseTarget +
+                ", nextBlockId=" + nextBlockId +
+                ", height=" + height +
+                ", id=" + id +
+                ", generatorId=" + generatorId +
+                '}';
+    }
 
     private final int version;
     private final int timestamp;
@@ -44,8 +61,17 @@ final class BlockImpl implements Block {
     private volatile Long generatorId;
 
 
-    BlockImpl(int version, int timestamp, Long previousBlockId, long totalAmountNQT, long totalFeeNQT, int payloadLength, byte[] payloadHash,
-              byte[] generatorPublicKey, byte[] generationSignature, byte[] blockSignature, byte[] previousBlockHash, List<TransactionImpl> transactions)
+    BlockImpl(int version, int timestamp,
+              Long previousBlockId,
+              long totalAmountNQT,
+              long totalFeeNQT,
+              int payloadLength,
+              byte[] payloadHash,
+              byte[] generatorPublicKey,
+              byte[] generationSignature,
+              byte[] blockSignature,
+              byte[] previousBlockHash,
+              List<TransactionImpl> transactions)
             throws NxtException.ValidationException {
 
         if (transactions.size() > Constants.MAX_NUMBER_OF_TRANSACTIONS) {
@@ -239,7 +265,8 @@ final class BlockImpl implements Block {
         json.put("payloadHash", Convert.toHexString(payloadHash));
         json.put("generatorPublicKey", Convert.toHexString(generatorPublicKey));
         json.put("generationSignature", Convert.toHexString(generationSignature));
-        if (version > 1) {
+        if (version >=1) {
+            Logger.logMessage("BlockImpl the length of previousBlockHash from net is [previousBlockHash]="+previousBlockHash);
             json.put("previousBlockHash", Convert.toHexString(previousBlockHash));
         }
         json.put("blockSignature", Convert.toHexString(blockSignature));
@@ -248,6 +275,8 @@ final class BlockImpl implements Block {
             transactionsData.add(transaction.getJSONObject());
         }
         json.put("transactions", transactionsData);
+
+        Logger.logMessage("BlockImpl getJSONObject for Block impl"+this);
         return json;
     }
 
@@ -272,10 +301,13 @@ final class BlockImpl implements Block {
         buffer.put(generationSignature);
         /*may a problem*/
         if (version >=1) {
+            Logger.logMessage("BlockImpl--> status of previousBlockHash ="+previousBlockHash);
+            if (previousBlockHash!=null){
             buffer.put(previousBlockHash);
+            }
         }
         buffer.put(blockSignature);
-        Logger.logMessage("块中的blockSignature的长度是="+blockSignature.length);
+        Logger.logMessage("BlockImpl the length of [blockSignature] ="+blockSignature.length);
         return buffer.array();
     }
 
@@ -308,9 +340,9 @@ final class BlockImpl implements Block {
             return false;
         }
         byte[] data = getBytes();
-        Logger.logMessage("data的长度为="+data.length);
+        Logger.logMessage("BlockImpl veriBlockSignature data="+data.length);
         byte[] data2 = new byte[data.length - 64];
-        Logger.logMessage("data2的长度为="+data.length);
+        Logger.logMessage("BlockImpl veriBlockSignature data="+data.length);
         System.arraycopy(data, 0, data2, 0, data2.length);
 
         return Crypto.verify(blockSignature, data2, generatorPublicKey, version >= 3) && account.setOrVerify(generatorPublicKey, this.height);
