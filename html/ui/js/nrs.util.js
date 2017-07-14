@@ -572,13 +572,8 @@ var NRS = (function(NRS, $, undefined) {
 	}
 
 	NRS.formatTimestamp = function(timestamp, date_only) {
-	//	alert("hello")
-        //var stringTime = "2014-07-10 10:21:12";
-
-
-		/*var date = new Date(Date.UTC(2017, 6, 4, 0, 0, 0, 0) + timestamp * 1000);*/
-			//var date=new Date(2017, 6, 3, 0, 0, 0)
-        var date = new Date(Date.UTC(2017, 6, 13, 0, 0, 0, 0) + timestamp * 1000);
+        var date = new Date(Date.UTC(2017, 6, 14, 0, 0, 0, 0) + timestamp * 1000);
+        //alert("day="+date.getDate()+"hour="+date.getHours())
 		if (!isNaN(date) && typeof(date.getFullYear) == 'function') {
 			var d = date.getDate();
 			var dd = d < 10 ? '0' + d : d;
@@ -621,7 +616,7 @@ var NRS = (function(NRS, $, undefined) {
 	}
 
 	NRS.formatTime = function(timestamp) {
-        var date = new Date(Date.UTC(2017, 6, 13, 0, 0, 0, 0) + timestamp * 1000);
+        var date = new Date(Date.UTC(2017, 6, 14, 0, 0, 0, 0) + timestamp * 1000);
 
 		if (!isNaN(date) && typeof(date.getFullYear) == 'function') {
 			var res = "";

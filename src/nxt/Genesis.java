@@ -18,7 +18,7 @@ public static final byte[] CREATOR_PUBLIC_KEY = {
     };
 
     public static final int[] GENESIS_AMOUNTS = {
-        1000000000,
+        1000000000
     };
 
     public static final byte[][] GENESIS_SIGNATURES = {

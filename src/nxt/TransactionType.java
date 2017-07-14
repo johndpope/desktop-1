@@ -212,6 +212,7 @@ public abstract class TransactionType {
      * @param recipientAccount 接收者账户
      */
     final void apply(Transaction transaction, Account senderAccount, Account recipientAccount) {
+        /**/
         senderAccount.addToBalanceNQT(- (Convert.safeAdd(transaction.getAmountNQT(), transaction.getFeeNQT())));
         if (transaction.getReferencedTransactionFullHash() != null) {
             senderAccount.addToUnconfirmedBalanceNQT(Constants.UNCONFIRMED_POOL_DEPOSIT_NQT);

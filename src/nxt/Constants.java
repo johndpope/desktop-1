@@ -2,6 +2,7 @@ package nxt;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 public final class Constants  {
     public static final boolean isOffline = Nxt.getBooleanProperty("nxt.isOffline");
@@ -75,19 +76,29 @@ public static final int TRANSPARENT_FORGING_BLOCK_6 =0;
     static final long UNCONFIRMED_POOL_DEPOSIT_NQT = (isTestnet ? 50 : 100) * ONE_NXT;
 
     public static final long EPOCH_BEGINNING;
-   public   static final Calendar C;
+   //public   static final Calendar c;
     public  static Date date;
 
 
 
     static {
-
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+        calendar.set(Calendar.YEAR, 2017);
+        calendar.set(Calendar.MONTH, Calendar.AUGUST-1);
+        calendar.set(Calendar.DAY_OF_MONTH, 13);
+        calendar.set(Calendar.HOUR_OF_DAY, 24);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        EPOCH_BEGINNING = calendar.getTimeInMillis();
+/*
 
         C = Calendar.getInstance();
         //   C.set(2017, 5, 30);
 
-        C.set(2017,6,13,8,0);
+        C.set(2017,6,14,8,0);
         EPOCH_BEGINNING=C.getTimeInMillis();
+*/
 
 
     }
